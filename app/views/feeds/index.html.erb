@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>投稿一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td><%= feed.user.name %></td>
+        <td><%= image_tag(feed.image.url) if feed.image && feed.image.url %>
+        <td><%= feed.title %></td>
+        <td><%= feed.content %></td>
+        <td><%= link_to '投稿を確認する', feed %></td>
+        <td><%= link_to '投稿を編集する', edit_feed_path(feed) %></td>
+        <td><%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規に投稿する', new_feed_path %>
