@@ -1,7 +1,7 @@
 header {
     position: fixed;
     width: 100%;
-    height: 7%;
+    height: 6%;
     left: 0;
     top: 0;
     background-color: rgb(3, 74, 174);
@@ -23,7 +23,6 @@ footer {
 .main-container {
     background-image :url("back_2.jpg");
     background-size: cover;
-    height: 1200px;
-    width: 200%;
+    height: 3000px;
     color: rgb(84, 86, 83);
 }

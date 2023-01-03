@@ -11,13 +11,13 @@
   </head>
 
   <body>
-    <div class="main-container">
-      <header>
-        <p>Acehook</p>
-      </header>
+    <header>
+      <p>Acehook</p>
+    </header>
 
     <br></br>
 
+    <div class="main-container">
       <% if logged_in? %>
         <%= link_to "プロフィール", user_path(current_user.id) %>
         <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
@@ -26,16 +26,15 @@
         <%= link_to "ログインする", new_session_path %>
       <% end %>
 
-
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
 
       <%= yield %>
-
-      <footer>
-        <p>Copyright &copy; 2022 DIC.</p>
-      </footer>
     </div>
+    
+    <footer>
+      <p>Copyright &copy; 2022 DIC.</p>
+    </footer>
   </body>
 </html>
