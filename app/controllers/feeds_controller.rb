@@ -28,6 +28,7 @@ class FeedsController < ApplicationController
       if @feed.save
         format.html { redirect_to feed_url(@feed), notice: "投稿しました！" }
         format.json { render :show, status: :created, location: @feed }
+        FeedMailer.feed_mail(@feed).deliver
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
@@ -65,6 +66,6 @@ class FeedsController < ApplicationController
   end
 
   def feed_params
-    params.require(:feed).permit(:id, :image, :image_cache, :title, :content)
+    params.require(:feed).permit(:id, :image, :image_cache, :title, :content, :email)
   end
 end

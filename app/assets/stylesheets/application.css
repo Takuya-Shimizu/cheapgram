@@ -4,7 +4,7 @@ header {
     height: 6%;
     left: 0;
     top: 0;
-    background-color: rgb(3, 74, 174);
+    background-color: rgb(1, 1, 1);
     color: white;
     text-align: center;
 }
@@ -15,13 +15,13 @@ footer {
     left: 0;
     bottom: 0;
     height: 7%;
-    background-color: rgb(3, 74, 174);
+    background-color: rgb(1, 1, 1);
     color: white;
     text-align: center;
 }
 
 .main-container {
-    background-image :url("back_2.jpg");
+    background-image :url("back_3.jpg");
     background-size: cover;
     height: 3000px;
     color: rgb(84, 86, 83);

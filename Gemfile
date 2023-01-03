@@ -27,6 +27,7 @@ group :development do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -41,3 +42,4 @@ gem 'dotenv-rails'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem 'rexml'
