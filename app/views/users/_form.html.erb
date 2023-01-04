@@ -1,17 +1,17 @@
 <%= form_with(model: @user, local: true, url: choose_new_or_edit) do |form| %>
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のエラーがあります。</h2>
 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <%= form.label :画像 %>
+  <%= form.label :image %>
   <%= image_tag(user.image.url) if user.image && user.image.url %>
   <%= form.file_field :image %>
   <%= form.hidden_field :image_cache %>
@@ -28,5 +28,5 @@
   <%= form.label :password_confirmation %>
   <%= form.password_field :password_confirmation %>
 
-  <%= form.submit "新規登録する" %>
+  <%= form.submit "登録する" %>
 <% end %>

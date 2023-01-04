@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :login_required, only: [:new, :create]
+  skip_before_action :login_required, only: [:new, :create, :confirm]
 
   def new
     @user = User.new
@@ -31,6 +31,16 @@ class UsersController < ApplicationController
   def edit
     set_user
   end
+
+  def update
+    set_user
+    if @user.update(user_params)
+      redirect_to user_path, notice: "プロフィールを編集しました！"
+    else
+      render :edit
+    end
+  end
+
 
   private
 

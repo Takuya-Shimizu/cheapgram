@@ -4,6 +4,9 @@
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :name %>
   <%= form.hidden_field :email %>
+  <%= form.hidden_field :password %>
+  <%= form.hidden_field :password_confirmation %>
+
 
   <p>画像:<%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
   <p>名前:<%= @user.name %></p>
