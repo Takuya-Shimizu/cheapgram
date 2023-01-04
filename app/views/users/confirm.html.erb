@@ -1,0 +1,15 @@
+<h1>以下の内容で登録する</h1>
+
+<%= form_with(model: @user, url: users_path, local: true) do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :email %>
+
+  <p>画像:<%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
+  <p>名前:<%= @user.name %></p>
+  <p>メールアドレス:<%= @user.email %></p>
+  <%= form.submit "登録する" %>
+
+  <%= form.submit "戻る", name: "back" %>
+
+<% end %>
