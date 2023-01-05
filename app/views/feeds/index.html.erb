@@ -20,8 +20,10 @@
         <td><%= feed.title %></td>
         <td><%= feed.content %></td>
         <td><%= link_to '投稿を確認する', feed %></td>
-        <td><%= link_to '投稿を編集する', edit_feed_path(feed) %></td>
-        <td><%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user == feed.user %>
+          <td><%= link_to '投稿を編集する', edit_feed_path(feed) %></td>
+          <td><%= link_to '投稿を削除する', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :own_user, only: [:edit, :update]
   skip_before_action :login_required, only: [:new, :create, :confirm]
 
   def new
@@ -25,22 +26,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_user
   end
 
   def edit
-    set_user
   end
 
   def update
-    set_user
     if @user.update(user_params)
       redirect_to user_path, notice: "プロフィールを編集しました！"
     else
       render :edit
     end
   end
-
 
   private
 
@@ -50,5 +47,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:id, :image, :image_cache, :name, :email, :password, :password_confirmation)
+  end
+
+  def own_user
+    unless current_user == User.find(params[:id])
+      redirect_to feeds_path
+    end
   end
 end

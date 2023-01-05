@@ -1,11 +1,13 @@
 class FeedsController < ApplicationController
+  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :own_feed, only: [:edit, :update, :destroy]
 
   def index
     @feeds = Feed.all
   end
 
   def show
-    set_feed
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   def new
@@ -18,7 +20,6 @@ class FeedsController < ApplicationController
   end
 
   def edit
-    set_feed
   end
 
   def create
@@ -40,7 +41,6 @@ class FeedsController < ApplicationController
   end
 
   def update
-    set_feed
     respond_to do |format|
       if @feed.update(feed_params)
         format.html { redirect_to feed_url(@feed), notice: "投稿を更新しました！" }
@@ -53,7 +53,6 @@ class FeedsController < ApplicationController
   end
 
   def destroy
-    set_feed
     @feed.destroy
 
     respond_to do |format|
@@ -70,5 +69,11 @@ class FeedsController < ApplicationController
 
   def feed_params
     params.require(:feed).permit(:id, :image, :image_cache, :title, :content, :email)
+  end
+
+  def own_feed
+    unless current_user == Feed.find(params[:id]).user
+      redirect_to feeds_path
+    end
   end
 end

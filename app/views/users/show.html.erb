@@ -6,5 +6,8 @@
 
 <%= link_to '新規に投稿する', new_feed_path %>
 <%= link_to "投稿一覧画面へ", feeds_path %>
-<%= link_to "プロフィールを編集する", edit_user_path(@user.id), data: {confirm: '本当に編集していいですか？'} %>
-<%= link_to '新規登録画面に戻る', new_user_path %>
+<%= link_to 'お気に入り一覧', favorites_path %>
+<%if current_user == @user %>
+  <%= link_to "プロフィールを編集する", edit_user_path(@user.id), data: {confirm: '本当に編集していいですか？'} %>
+<% end %>
+<%= link_to '新規登録画面へ', new_user_path %>
