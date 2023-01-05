@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       render :new
     else
       if @user.save
-        redirect_to new_user_path, notice: "登録しました！"
+        session[:user_id] = @user.id
+        redirect_to user_path(@user.id), notice: "登録しました！"
       else
         render :new
       end
